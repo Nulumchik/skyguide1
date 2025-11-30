@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sky Guide — Оператор</title>
+
+<style>
+/* ---------- Общий стиль ---------- */
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: #e9f8fa;
+  color: #033d4b;
+}
+
+/* ---------- Хедер ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: linear-gradient(90deg, #0093a4, #7fd5cf);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .logo {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Секции ---------- */
+.section {
+  padding: 70px 40px;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 38px;
+  margin-bottom: 25px;
+}
+
+/* ---------- Карточки ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.card {
+  padding: 28px;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* ---------- ФОРМА ---------- */
+form {
+  max-width: 520px;
+  margin: 50px auto 0 auto;
+  text-align: left;
+}
+
+form label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #b8cacd;
+  font-size: 16px;
+  background: #f8ffff;
+}
+
+form button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 17px;
+  background: #006c75;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+form button:hover {
+  background: #004e54;
+}
+
+/* ---------- QR секция ---------- */
+.qr-section {
+  background: #d5f4f6;
+  border-radius: 14px;
+  margin: 50px auto;
+  max-width: 420px;
+  padding: 30px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.qr-section h2 {
+  color: #014f54;
+}
+
+.qr-section p {
+  color: #014f54;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #014f54;
+  color: white;
+  margin-top: 60px;
+}
+
+/* ---------- АДАПТИВНОСТЬ ---------- */
+@media (max-width: 600px) {
+  header {
+    padding: 20px;
+  }
+
+  nav a {
+    margin-left: 12px;
+    font-size: 15px;
+  }
+
+  .section h2 {
+    font-size: 30px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Sky Guide — Оператор</div>
+  <nav>
+    <a href="index.html">Главная</a>
+    <a href="customer.html">Покупатель</a>
+  </nav>
+</header>
+
+<section class="section">
+  <h2>Добро пожаловать, оператор!</h2>
+  <p>Зарегистрируйтесь, просматривайте заявки и управляйте профилем.</p>
+
+  <div class="grid">
+    <div class="card">Регистрация оператора</div>
+    <div class="card">Список ваших заказов</div>
+    <div class="card">Управление ценами и расписанием</div>
+    <div class="card">Статистика и рейтинги</div>
+  </div>
+
+  <form id="registerForm">
+    <label>Имя:</label>
+    <input type="text" name="name" placeholder="Введите имя" required>
+
+    <label>Email:</label>
+    <input type="email" name="email" placeholder="Введите email" required>
+
+    <label>Пароль:</label>
+    
+
+    <button type="submit">Зарегистрироваться</button>
+  </form>
+</section>
+
+<section class="section qr-section">
+  <h2>QR-код для оператора</h2>
+  <p>Сканируйте, чтобы открыть страницу на телефоне</p>
+
+  <img id="qr" width="200" style="margin-top: 20px; display:block; margin:auto;">
+</section>
+
+<footer>
+  © 2025 Sky Guide — Оператор. Все права защищены.
+</footer>
+
+<script>
+/* Автоматическая генерация QR-кода под текущий домен */
+const qrUrl = location.origin + "/operator.html";
+document.getElementById("qr").src =
+  "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=" + encodeURIComponent(qrUrl);
+
+/* Лёгкая валидация формы */
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  alert("Регистрация успешно отправлена!");
+});
+</script>
+
+
+<!-- Chat widget (auto-guest names, connects to Socket.io) -->
+<div id="sg-chat-root"></div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+(function(){
+  const socket = io();
+  // Determine role by page path
+  const path = location.pathname || '/index.html';
+  let role = 'guest';
+  if (path.includes('operator')) role = 'operator';
+  else if (path.includes('customer')) role = 'customer';
+  // generate guest name
+  const id = Math.floor(Math.random()*9000)+1000;
+  const guestName = (role==='operator' ? 'Оператор-' : role==='customer' ? 'Покупатель-' : 'Гость-') + id;
+
+  // build chat UI
+  const root = document.getElementById('sg-chat-root');
+  root.innerHTML = `
+    <div id="sg-chat" style="position:fixed;right:18px;bottom:18px;width:340px;max-width:92%;z-index:9999">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:linear-gradient(90deg,#0093a4,#7fd5cf);color:white;border-radius:10px 10px 0 0">
+        <strong>Чат Sky Guide</strong>
+        <small style="opacity:0.9">${guestName}</small>
+      </div>
+      <div id="sg-messages" style="background:#f7feff;height:320px;overflow:auto;padding:10px;border:1px solid #e0f5f6;border-top:none"></div>
+      <div style="display:flex;padding:8px;border-radius:0 0 10px 10px;background:white;border:1px solid #e0f5f6;border-top:none">
+        <input id="sg-input" placeholder="Сообщение..." style="flex:1;padding:8px;border-radius:8px;border:1px solid #cfeef0" />
+        <button id="sg-send" style="margin-left:8px;padding:8px 12px;background:#006d77;color:white;border:none;border-radius:8px">Отправить</button>
+      </div>
+    </div>
+  `;
+
+  const msgBox = document.getElementById('sg-messages');
+  const input = document.getElementById('sg-input');
+  const sendBtn = document.getElementById('sg-send');
+
+  function addMessage(m){
+    const el = document.createElement('div');
+    el.style.marginBottom='8px';
+    el.innerHTML = '<div style="font-size:12px;color:#556;margin-bottom:4px">'+(m.name||'Гость')+' • '+(new Date(m.ts)).toLocaleTimeString()+'</div><div style="background:#e8fcff;padding:8px;border-radius:8px;display:inline-block">'+(m.text||'')+'</div>';
+    msgBox.appendChild(el);
+    msgBox.scrollTop = msgBox.scrollHeight;
+  }
+
+  socket.on('chat history', arr => {
+    msgBox.innerHTML=''; arr.forEach(addMessage);
+  });
+  socket.on('chat message', m => { addMessage(m); });
+
+  function send(){
+    const text = input.value.trim();
+    if(!text) return;
+    const msg = { name: guestName, role: role, text: text, ts: Date.now() };
+    socket.emit('chat message', msg);
+    input.value='';
+  }
+  sendBtn.addEventListener('click', send);
+  input.addEventListener('keydown', e=>{ if(e.key==='Enter') send(); });
+})();
+</script>
+
+</body>
+</html>
+
+

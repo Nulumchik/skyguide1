@@ -1,0 +1,142 @@
+/* Цветовая гамма, вдохновлённая Satisfactory */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5; /* светло-серое / почти белое, нейтральный фон */
+    color: #333; /* тёмно-серый текст */
+}
+
+/* Хедер с градиентом “заводского” оранжево-оранжево-золотого */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: linear-gradient(90deg, #ff4f00, #ffd700);
+    color: white;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Ссылки и кнопки в шапке */
+nav a, nav button {
+    margin-left: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Основные кнопки */
+.btn-primary {
+    background: #990000;  /* тёмно-красный */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: #ffd700; /* золотистый */
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Модальное окно входа */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 350px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Секции */
+.section {
+    padding: 60px 40px;
+    text-align: center;
+}
+
+/* О компании — давать более светлый фон с акцентом */
+.section-about {
+    background: #fff5e6; /* нежный светло-оранжевый оттенок */
+}
+
+/* Герой (hero) секция — лёгкий градиент в стиле Satisfactory */
+.hero {
+    text-align: center;
+    padding: 120px 25px;
+    background: linear-gradient(135deg, #ffd700, #ff4f00);
+    color: #333;
+}
+
+.grid img, .grid video {
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #990000; /* тёмно-красный */
+    color: white;
+}
+
+/* QR-код */
+.qr-code p {
+    color: #333;
+}
+
+.qr-code img {
+    width: 120px;
+}
+
+/* Дроны и другие анимации — если есть, можно оставить, или сделать их в нейтральных/металлических цветах */
+.drone {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    z-index: 500;
+    transition: transform 0.5s linear;
+    /* можно добавить filter или tint, если нужно подстроить цвет дронов */
+}
+
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero h1 {
+        font-size: 32px;
+    }
+    .section {
+        padding: 40px 20px;
+    }
+}
